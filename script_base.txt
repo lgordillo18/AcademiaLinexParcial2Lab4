@@ -1,0 +1,235 @@
+USE [AcademiaProgramacion]
+GO
+/****** Object:  Table [dbo].[Alumnos]    Script Date: 11/7/2020 1:18:21 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Alumnos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [nvarchar](20) NOT NULL,
+	[apellido] [nvarchar](20) NOT NULL,
+	[dni] [nvarchar](20) NULL,
+	[fechaNacimiento] [date] NULL,
+	[sexo] [int] NULL,
+	[fechaCreacion] [datetime] NOT NULL,
+ CONSTRAINT [PK_Alumnos] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[AlumnosInscriptos]    Script Date: 11/7/2020 1:18:21 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AlumnosInscriptos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[idAlumno] [int] NOT NULL,
+	[idCurso] [int] NOT NULL,
+	[descuento] [int] NULL,
+	[fechaInscripcion] [datetime] NOT NULL,
+ CONSTRAINT [PK_AlumnosInscriptos] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Cursos]    Script Date: 11/7/2020 1:18:21 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Cursos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [nvarchar](50) NOT NULL,
+	[precio] [float] NOT NULL,
+	[turnoId] [int] NOT NULL,
+	[tipoCursoId] [int] NOT NULL,
+ CONSTRAINT [PK_Cursos] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Examenes]    Script Date: 11/7/2020 1:18:21 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Examenes](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[idAlumno] [int] NOT NULL,
+	[idCurso] [int] NOT NULL,
+	[fecha] [datetime] NOT NULL,
+	[idTipo] [int] NOT NULL,
+	[notaObtenida] [int] NOT NULL,
+	[idPrograma] [int] NULL,
+ CONSTRAINT [PK_Examenes] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Programas]    Script Date: 11/7/2020 1:18:21 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Programas](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [nvarchar](50) NULL,
+	[descargaHabilitada] [bit] NOT NULL,
+	[fecha] [datetime] NOT NULL,
+	[ruta] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_Programas] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[RegistroDescargas]    Script Date: 11/7/2020 1:18:21 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[RegistroDescargas](
+	[idPrograma] [int] NOT NULL,
+	[fechaDescarga] [date] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TiposDeCurso]    Script Date: 11/7/2020 1:18:21 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TiposDeCurso](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_TiposDeCurso] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TiposDeExamen]    Script Date: 11/7/2020 1:18:21 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TiposDeExamen](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_TiposDeExamen] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TurnosDeCurso]    Script Date: 11/7/2020 1:18:21 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TurnosDeCurso](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_TurnosDeCurso] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Usuarios]    Script Date: 11/7/2020 1:18:21 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Usuarios](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[username] [nvarchar](50) NOT NULL,
+	[password] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_Usuarios] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Cursos] ON 
+GO
+INSERT [dbo].[Cursos] ([id], [nombre], [precio], [turnoId], [tipoCursoId]) VALUES (1, N'Java Avanzado       ', 12000, 1, 1)
+GO
+INSERT [dbo].[Cursos] ([id], [nombre], [precio], [turnoId], [tipoCursoId]) VALUES (2, N'Javascript Nivel Junior', 4000, 3, 2)
+GO
+SET IDENTITY_INSERT [dbo].[Cursos] OFF
+GO
+SET IDENTITY_INSERT [dbo].[TiposDeCurso] ON 
+GO
+INSERT [dbo].[TiposDeCurso] ([id], [nombre]) VALUES (1, N'Presencial          ')
+GO
+INSERT [dbo].[TiposDeCurso] ([id], [nombre]) VALUES (2, N'Semi-Presencial     ')
+GO
+INSERT [dbo].[TiposDeCurso] ([id], [nombre]) VALUES (3, N'A distancia         ')
+GO
+SET IDENTITY_INSERT [dbo].[TiposDeCurso] OFF
+GO
+SET IDENTITY_INSERT [dbo].[TiposDeExamen] ON 
+GO
+INSERT [dbo].[TiposDeExamen] ([id], [nombre]) VALUES (1, N'Examen Parcial ')
+GO
+INSERT [dbo].[TiposDeExamen] ([id], [nombre]) VALUES (2, N'Examen Final   ')
+GO
+SET IDENTITY_INSERT [dbo].[TiposDeExamen] OFF
+GO
+SET IDENTITY_INSERT [dbo].[TurnosDeCurso] ON 
+GO
+INSERT [dbo].[TurnosDeCurso] ([id], [nombre]) VALUES (1, N'Mañana              ')
+GO
+INSERT [dbo].[TurnosDeCurso] ([id], [nombre]) VALUES (2, N'Tarde               ')
+GO
+INSERT [dbo].[TurnosDeCurso] ([id], [nombre]) VALUES (3, N'Noche               ')
+GO
+SET IDENTITY_INSERT [dbo].[TurnosDeCurso] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Usuarios] ON 
+GO
+INSERT [dbo].[Usuarios] ([id], [username], [password]) VALUES (1, N'admin               ', N'뙰�ꬋ⢯孴糾༄ꄭ逝짓螾뷶☪盿ಕ鯲◠厁悝詸摆绘矉➥柵ƚᝂ鿛')
+GO
+SET IDENTITY_INSERT [dbo].[Usuarios] OFF
+GO
+ALTER TABLE [dbo].[AlumnosInscriptos]  WITH CHECK ADD  CONSTRAINT [FK_AlumnosInscriptos_Alumnos] FOREIGN KEY([idAlumno])
+REFERENCES [dbo].[Alumnos] ([id])
+GO
+ALTER TABLE [dbo].[AlumnosInscriptos] CHECK CONSTRAINT [FK_AlumnosInscriptos_Alumnos]
+GO
+ALTER TABLE [dbo].[AlumnosInscriptos]  WITH CHECK ADD  CONSTRAINT [FK_AlumnosInscriptos_Cursos] FOREIGN KEY([idCurso])
+REFERENCES [dbo].[Cursos] ([id])
+GO
+ALTER TABLE [dbo].[AlumnosInscriptos] CHECK CONSTRAINT [FK_AlumnosInscriptos_Cursos]
+GO
+ALTER TABLE [dbo].[Cursos]  WITH CHECK ADD  CONSTRAINT [FK_Cursos_TiposDeCurso] FOREIGN KEY([tipoCursoId])
+REFERENCES [dbo].[TiposDeCurso] ([id])
+GO
+ALTER TABLE [dbo].[Cursos] CHECK CONSTRAINT [FK_Cursos_TiposDeCurso]
+GO
+ALTER TABLE [dbo].[Cursos]  WITH CHECK ADD  CONSTRAINT [FK_Cursos_TurnosDeCurso] FOREIGN KEY([turnoId])
+REFERENCES [dbo].[TurnosDeCurso] ([id])
+GO
+ALTER TABLE [dbo].[Cursos] CHECK CONSTRAINT [FK_Cursos_TurnosDeCurso]
+GO
+ALTER TABLE [dbo].[Examenes]  WITH CHECK ADD  CONSTRAINT [FK_Examenes_Alumnos] FOREIGN KEY([idAlumno])
+REFERENCES [dbo].[Alumnos] ([id])
+GO
+ALTER TABLE [dbo].[Examenes] CHECK CONSTRAINT [FK_Examenes_Alumnos]
+GO
+ALTER TABLE [dbo].[Examenes]  WITH CHECK ADD  CONSTRAINT [FK_Examenes_Cursos] FOREIGN KEY([idCurso])
+REFERENCES [dbo].[Cursos] ([id])
+GO
+ALTER TABLE [dbo].[Examenes] CHECK CONSTRAINT [FK_Examenes_Cursos]
+GO
+ALTER TABLE [dbo].[Examenes]  WITH CHECK ADD  CONSTRAINT [FK_Examenes_TiposDeExamen] FOREIGN KEY([idTipo])
+REFERENCES [dbo].[TiposDeExamen] ([id])
+GO
+ALTER TABLE [dbo].[Examenes] CHECK CONSTRAINT [FK_Examenes_TiposDeExamen]
+GO
