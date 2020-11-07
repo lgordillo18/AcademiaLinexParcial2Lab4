@@ -46,7 +46,7 @@ public class Cursos extends HttpServlet {
         {
             request.setAttribute("cursos", gestor.obtenerListado());
             
-            RequestDispatcher rd = request.getRequestDispatcher("/cursos.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("cursos/cursos.jsp");
             rd.forward(request, response);
         } else if(section.equals("nuevo")){
             ArrayList<TipoCurso> listaTipos = gestor.obtenerTipos();
@@ -54,7 +54,7 @@ public class Cursos extends HttpServlet {
             ArrayList<TipoTurnoCurso> listaTurnos = gestor.obtenerTurnos();
             request.setAttribute("listaTurnos", listaTurnos);
             
-            RequestDispatcher rd = request.getRequestDispatcher("/altaCurso.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("cursos/altaCurso.jsp");
             rd.forward(request, response);
             
         } else if(section.equals("editar")) {
@@ -67,7 +67,7 @@ public class Cursos extends HttpServlet {
             ArrayList<TipoTurnoCurso> listaTurnos = gestor.obtenerTurnos();
             request.setAttribute("listaTurnos", listaTurnos);
             
-            RequestDispatcher rd = request.getRequestDispatcher("/editarCurso.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("cursos/editarCurso.jsp");
             rd.forward(request, response);
             
         } else if (section.equals("eliminar")){
@@ -105,7 +105,7 @@ public class Cursos extends HttpServlet {
             Curso c = new Curso(nombre, Double.parseDouble(precio), tipoCursoId, tipoTurnoId);
             gestor.nuevoCurso(c);
             
-            RequestDispatcher rd = request.getRequestDispatcher("/cursos.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("cursos/cursos.jsp");
             rd.forward(request, response);
         } else {
             String nombre = request.getParameter("txtNombre");
@@ -118,7 +118,7 @@ public class Cursos extends HttpServlet {
             gestor.actualizar(c);
             
             request.setAttribute("cursos", gestor.obtenerListado());
-            RequestDispatcher rd = request.getRequestDispatcher("/cursos.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("cursos/cursos.jsp");
             rd.forward(request, response);
         }
     }

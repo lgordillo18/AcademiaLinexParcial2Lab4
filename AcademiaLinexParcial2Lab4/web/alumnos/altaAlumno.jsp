@@ -20,37 +20,40 @@
 </head>
 
 <body>
-    <%@include file="navbar.jsp" %>
+    <%@include file="/componentes/navbar.jsp" %>
     <main class="page registration-page">
         <section class="clean-block clean-form dark">
             <div class="container">
                 <div class="block-heading">
-                    <h2 class="text-info">Nuevo Curso</h2>
+                    <h2 class="text-info">Nuevo Alumno</h2>
+                    <p>Formulario para crear un nuevo alumno.</p>
                 </div>
-                <form method="post" action="Cursos">
+                <form method="post" action="Alumnos">
                     <div class="form-group">
                         <label>Nombre</label>
-                        <input class="form-control item" type="text" name="txtNombre" required=""></div>
-                    <div class="form-group">
-                        <label>Precio</label>
-                        <input class="form-control item" type="text" name="txtPrecio"  required=""></div>
-                    <div class="form-group">
-                        <label>Tipo de Curso</label>
-                        <select class="form-control" id="cmbTipoCurso" name="cmbTipoCurso" required="">
-                            <c:forEach items="${ listaTipos }" var="item">
-                                <option value="${ item.id }">${ item.nombre }</option>
-                            </c:forEach>
-                        </select>
+                        <input class="form-control item" type="text" name="txtNombre" required="">
                     </div>
                     <div class="form-group">
-                        <label>Horario del Curso</label>
-                        <select class="form-control" name="cmbHorario" id="cmbHorario" required="">
-                            <c:forEach items="${ listaTurnos }" var="item">
-                                <option value="${ item.id }">${ item.nombre }</option>
-                            </c:forEach>
-                        </select>
+                        <label>Apellido</label>
+                        <input class="form-control item" type="text" name="txtApellido" required="">
                     </div>
-                    <button class="btn btn-primary btn-block" type="submit" value="Aceptar" style="padding: 6px;margin-top: 70px;">Crear</button>
+                    <div class="form-group">
+                        <label>DNI</label>
+                        <input class="form-control item" type="text" name="txtDni">
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de Nacimiento</label>
+                        <input class="form-control" name="cmbFechaNac" type="date">
+                    </div>
+                    <div class="form-group">
+                        <label>Sexo</label>
+                        <select class="form-control" name="cmbSexo"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input class="form-control item" type="email" name="txtEmail" required="">
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit" style="padding: 6px;margin-top: 70px;">Crear</button>
                 </form>
             </div>
         </section>

@@ -20,38 +20,40 @@
 </head>
 
 <body>
-    <%@include file="navbar.jsp" %>
+    <%@include file="/componentes/navbar.jsp" %>
     <main class="page registration-page">
         <section class="clean-block clean-form dark">
             <div class="container">
                 <div class="block-heading">
-                    <h2 class="text-info">Editar Curso</h2>
+                    <h2 class="text-info">Editar Alumno</h2>
                 </div>
-                <form method="post" action="Cursos">
+                <form method="post" action="Alumnos">
                     <input type="hidden" name="idCurso" value="<jsp:getProperty name="cursoModel" property="id"></jsp:getProperty>" />
                     <div class="form-group">
                         <label>Nombre</label>
-                        <input class="form-control item" type="text" name="txtNombre" required="" value="<jsp:getProperty name="cursoModel" property="nombre"></jsp:getProperty>"></div>
-                    <div class="form-group">
-                        <label>Precio</label>
-                        <input class="form-control item" type="text" name="txtPrecio"  required="" value="<jsp:getProperty name="cursoModel" property="precio"></jsp:getProperty>"></div>
-                    <div class="form-group">
-                        <label>Tipo de Curso</label>
-                        <select class="form-control" id="cmbTipoCurso" name="cmbTipoCurso" required="">
-                            <c:forEach items="${ listaTipos }" var="item">
-                                <option value="${ item.id }" <c:if test="${ item.id == cursoModel.tipoTurnoId}">selected</c:if>>${ item.nombre }</option>
-                            </c:forEach>
-                        </select>
+                        <input class="form-control item" type="text" name="txtNombre" required="" value="<jsp:getProperty name="alumnoModel" property="nombre"></jsp:getProperty>">
                     </div>
                     <div class="form-group">
-                        <label>Horario del Curso</label>
-                        <select class="form-control" name="cmbHorario" id="cmbHorario" required="">
-                            <c:forEach items="${ listaTurnos }" var="item">
-                                <option value="${ item.id }">${ item.nombre }</option>
-                            </c:forEach>
-                        </select>
+                        <label>Apellido</label>
+                        <input class="form-control item" type="text" name="txtApellido" required="" value="<jsp:getProperty name="alumnoModel" property="apellido"></jsp:getProperty>">
                     </div>
-                    <button class="btn btn-primary btn-block" type="submit" value="Aceptar" style="padding: 6px;margin-top: 70px;">Guardar cambios</button>
+                    <div class="form-group">
+                        <label>DNI</label>
+                        <input class="form-control item" type="text" name="txtDni" value="<jsp:getProperty name="alumnoModel" property="dni"></jsp:getProperty>">
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de Nacimiento</label>
+                        <input class="form-control" name="cmbFechaNac" type="date" value="<jsp:getProperty name="alumnoModel" property="fechaNac"></jsp:getProperty>">
+                    </div>
+                    <div class="form-group">
+                        <label>Sexo</label>
+                        <select class="form-control" name="cmbSexo" value="<jsp:getProperty name="alumnoModel" property="sexo"></jsp:getProperty>"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input class="form-control item" type="email" name="txtEmail" required="" value="<jsp:getProperty name="alumnoModel" property="email"></jsp:getProperty>">
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit" style="padding: 6px;margin-top: 70px;">Guardar cambios</button>
                 </form>
             </div>
         </section>

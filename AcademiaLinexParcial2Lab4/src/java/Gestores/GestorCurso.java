@@ -5,8 +5,8 @@
  */
 package Gestores;
 
+import DTOs.DtoListadoCursos;
 import Modelos.Curso;
-import Modelos.DtoListadoCursos;
 import Modelos.TipoCurso;
 import Modelos.TipoTurnoCurso;
 import java.sql.PreparedStatement;
