@@ -27,7 +27,7 @@ public class GestorAlumno extends GestorDB {
             ps.setString(1, al.getNombre());
             ps.setString(2, al.getApellido());
             ps.setString(3, al.getDni());
-            ps.setDate(4, al.getFechaNac());
+            ps.setString(4, al.getFechaNac());
             ps.setInt(5, al.getSexo());
             ps.setString(6, al.getEmail());
             ps.executeUpdate();
@@ -57,7 +57,7 @@ public class GestorAlumno extends GestorDB {
                 String nombre = rs.getString("nombre");
                 String apellido = rs.getString("apellido");
                 String dni = rs.getString("dni");
-                Date fechaNac = rs.getDate("fechaNacimiento");
+                String fechaNac = rs.getString("fechaNacimiento");
                 int sexo = rs.getInt("sexo");
                 String email = rs.getString("email");
                 
@@ -95,7 +95,7 @@ public class GestorAlumno extends GestorDB {
                 String nombre = rs.getString("nombre");
                 String apellido = rs.getString("apellido");
                 String dni = rs.getString("dni");
-                Date fechaNac = rs.getDate("fechaNacimiento");
+                String fechaNac = rs.getString("fechaNacimiento");
                 int sexo = rs.getInt("sexo");
                 String email = rs.getString("email");
                 
@@ -125,7 +125,7 @@ public class GestorAlumno extends GestorDB {
             ps.setString(1, al.getNombre());
             ps.setString(2, al.getApellido());
             ps.setString(3, al.getDni());
-            ps.setDate(4, al.getFechaNac());
+            ps.setString(4, al.getFechaNac());
             ps.setInt(5, al.getSexo());
             ps.setString(6, al.getEmail());
             ps.setInt(7, al.getId());

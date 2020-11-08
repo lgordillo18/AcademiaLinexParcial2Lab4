@@ -47,7 +47,11 @@
                     </div>
                     <div class="form-group">
                         <label>Sexo</label>
-                        <select class="form-control" name="cmbSexo"></select>
+                        <select class="form-control" name="cmbSexo">
+                            <option value="1">Masculino</option>
+                            <option value="2">Femenino</option>
+                            <option value="3">Otro</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Email</label>

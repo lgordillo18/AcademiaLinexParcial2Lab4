@@ -28,7 +28,7 @@
                     <h2 class="text-info">Editar Alumno</h2>
                 </div>
                 <form method="post" action="Alumnos">
-                    <input type="hidden" name="idCurso" value="<jsp:getProperty name="cursoModel" property="id"></jsp:getProperty>" />
+                    <input type="hidden" name="idCurso" value="<jsp:getProperty name="alumnoModel" property="id"></jsp:getProperty>" />
                     <div class="form-group">
                         <label>Nombre</label>
                         <input class="form-control item" type="text" name="txtNombre" required="" value="<jsp:getProperty name="alumnoModel" property="nombre"></jsp:getProperty>">
@@ -47,7 +47,11 @@
                     </div>
                     <div class="form-group">
                         <label>Sexo</label>
-                        <select class="form-control" name="cmbSexo" value="<jsp:getProperty name="alumnoModel" property="sexo"></jsp:getProperty>"></select>
+                        <select class="form-control" name="cmbSexo">
+                            <option value="1" <c:if test="${ item.sexo == alumnoModel.sexo}">selected</c:if>>Masculino</option>
+                            <option value="2" <c:if test="${ item.sexo == alumnoModel.sexo}">selected</c:if>>Femenino</option>
+                            <option value="3" <c:if test="${ item.sexo == alumnoModel.sexo}">selected</c:if>>Otro</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Email</label>

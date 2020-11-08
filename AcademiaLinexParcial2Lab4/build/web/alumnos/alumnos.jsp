@@ -64,7 +64,9 @@
                 </div>
                 <div>
                     <div class="row text-right" style="padding-top: 12px;">
-                        <div class="col"><button class="btn btn-primary" type="button" style="width: 107px;">Nuevo</button></div>
+                        <div class="col">
+                            <a href="Alumnos?section=nuevo"><button class="btn btn-primary" type="button" style="width: 107px;">Nuevo</button></a>
+                        </div>
                     </div>
                 </div>
             </div>

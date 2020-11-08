@@ -5,8 +5,6 @@
  */
 package Modelos;
 
-import java.sql.Date;
-
 /**
  *
  * @author User
@@ -16,11 +14,11 @@ public class Alumno {
     private String nombre;
     private String apellido;
     private String dni;
-    private Date fechaNac;
+    private String fechaNac;
     private int sexo;
     private String email;
 
-    public Alumno(String nombre, String apellido, String dni, Date fechaNac, int sexo, String email) {
+    public Alumno(String nombre, String apellido, String dni, String fechaNac, int sexo, String email) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -61,11 +59,11 @@ public class Alumno {
         this.dni = dni;
     }
 
-    public Date getFechaNac() {
+    public String getFechaNac() {
         return fechaNac;
     }
 
-    public void setFechaNac(Date fechaNac) {
+    public void setFechaNac(String fechaNac) {
         this.fechaNac = fechaNac;
     }
 
