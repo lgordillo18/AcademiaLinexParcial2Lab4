@@ -75,7 +75,7 @@ public class Cursos extends HttpServlet {
             gestor.eliminar(idCurso);
             
             request.setAttribute("cursos", gestor.obtenerListado());
-            RequestDispatcher rd = request.getRequestDispatcher("/cursos.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("cursos/cursos.jsp");
             rd.forward(request, response);
             
         }

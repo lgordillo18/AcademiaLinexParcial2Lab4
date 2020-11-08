@@ -1,9 +1,11 @@
+<%-- 
+    Document   : index
+    Created on : Nov 8, 2020, 6:08:22 PM
+    Author     : User
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
 
 <head>
@@ -17,27 +19,14 @@ and open the template in the editor.
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="#">Academia Linex</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Programas">Programas</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="Cursos">Cursos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Alumnos">Alumnos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Inscripciones">Inscribirme</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Login">Iniciar Sesion</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <%@include file="/componentes/navbar.jsp" %>
     <main class="page landing-page">
         <section class="clean-block clean-hero" style="background-image:url(&quot;tech/image4.jpg&quot;);color:rgba(9, 162, 255, 0.85);">
             <div class="text">
                 <h2 style="font-size: 60px;">Academia Linex</h2>
                 <p style="font-size: 22px;">Aprende programacion hoy!</p>
-                <button class="btn btn-outline-light btn-lg" type="button">Listado de Cursos</button>
-                <button class="btn btn-outline-light btn-lg" type="button" style="margin-left: 20px;">Inscribirme hoy!</button>
+                <a href="Cursos"><button class="btn btn-outline-light btn-lg" type="button">Listado de Cursos</button></a>
+                <a href="Inscripciones?section=nuevo"><button class="btn btn-outline-light btn-lg" type="button" style="margin-left: 20px;">Inscribirme hoy!</button></a>
             </div>
         </section>
         <section class="clean-block slider dark"></section>
