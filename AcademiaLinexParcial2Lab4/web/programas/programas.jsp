@@ -34,7 +34,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Codigo Programa</th>
+                                            <th style="text-align: left;">Codigo Programa</th>
                                             <th class="text-center">Nombre</th>
                                             <th class="text-center">Autor</th>
                                             <th class="text-center">Descarga</th>
@@ -49,15 +49,25 @@
                                                 <td>${ item.id }</td>
                                                 <td class="text-center">${ item.nombre }</td>
                                                 <td class="text-center">${ item.nombreAutor}</td>
-                                                <td class="text-center">${ item.ruta}</td>
+                                                <td class="text-center">
+                                                    <c:if test="${item.habilitado}">
+                                                        <a href="Programas?section=descargar&id=${ item.id }">
+                                                            <button class="btn btn-primary" type="button" style="margin-left: 6px;">Descargar</button>
+                                                        </a>
+                                                    </c:if>
+                                                </td>
                                                 <% if ((String)request.getSession().getAttribute("user") != null && (String)request.getSession().getAttribute("user") != "") { %>
                                                 <td style="text-align: right;">
-                                                    <a href="Programas?section=habilitar&id=${ item.id }">
-                                                        <button class="btn btn-primary" type="button" style="margin-left: 6px;">Habilitar</button>
-                                                    </a>
-                                                    <a href="Programas?section=deshabilitar&id=${ item.id }">
-                                                        <button class="btn btn-primary" type="button" style="margin-left: 6px;">Deshabilitar</button>
-                                                    </a>
+                                                    <c:if test="${!item.habilitado}">
+                                                        <form method="post" action="Programas?action=habilitar&id=${ item.id }">
+                                                            <button class="btn btn-success" type="submit" style="margin-left: 6px;">Habilitar</button>
+                                                        </form>
+                                                    </c:if>
+                                                    <c:if test="${item.habilitado}">
+                                                        <form method="post" action="Programas?action=deshabilitar&id=${ item.id }">
+                                                            <button class="btn btn-warning" type="submit" style="margin-left: 6px;">Deshabilitar</button>
+                                                        </form>
+                                                    </c:if>
                                                     <a href="Programas?section=eliminar&id=${ item.id }">
                                                         <button class="btn btn-primary bg-danger" type="button" style="margin-left: 6px;">Eliminar</button>
                                                     </a>

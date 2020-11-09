@@ -10,7 +10,9 @@ import Modelos.Programa;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -102,6 +104,28 @@ public class GestorPrograma extends GestorDB {
             PreparedStatement ps = con.prepareStatement("DELETE Programas WHERE id = ?");
             ps.setInt(1, idPrograma);
             ps.executeUpdate();
+        }
+        catch(Exception exc)
+        {
+            exc.printStackTrace();
+        }
+        finally
+        {
+            cerrarConexion();
+        }
+    }
+    
+    public void logDescarga(int idPrograma) {
+        try
+        {
+            abrirConexion();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO RegistroDescargas (idPrograma, fechaDescarga) VALUES (?, ?)");
+            ps.setInt(1, idPrograma);
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+            Date date = new Date();
+            ps.setString(2, formato.format(date));
+            ps.executeUpdate();
+            
         }
         catch(Exception exc)
         {

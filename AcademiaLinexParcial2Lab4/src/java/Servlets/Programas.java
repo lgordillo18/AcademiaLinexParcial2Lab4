@@ -50,6 +50,8 @@ public class Programas extends HttpServlet {
         GestorPrograma gestor = new GestorPrograma();
         GestorAlumnoInscripto gestorIns = new GestorAlumnoInscripto();
         String section = request.getParameter("section");
+        String action = request.getParameter("action");
+        String idPrograma = request.getParameter("id");
         
         if(section == null || section.isEmpty())
         {
@@ -64,10 +66,9 @@ public class Programas extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("programas/altaPrograma.jsp");
             rd.forward(request, response);
         } else if (section.equals("eliminar")){
-            int idPrograma = Integer.parseInt(request.getParameter("id"));
-            gestor.eliminar(idPrograma);
+            gestor.eliminar(Integer.parseInt(idPrograma));
             
-            request.setAttribute("inscripciones", gestor.obtenerListado());
+            request.setAttribute("programas", gestor.obtenerListado());
             RequestDispatcher rd = request.getRequestDispatcher("programas/programas.jsp");
             rd.forward(request, response);
         }
@@ -109,18 +110,18 @@ public class Programas extends HttpServlet {
         }
         
         if (!action.isEmpty()) {
-            if (action == "habilitar") {
+            if (action.equals("habilitar")) {
                 gestor.habilitar(Integer.parseInt(idPrograma), true);
             }
-            if (action == "deshabilitar") {
+            if (action.equals("deshabilitar")) {
                 gestor.habilitar(Integer.parseInt(idPrograma), false);
             }
             
+            request.setAttribute("programas", gestor.obtenerListado());
             RequestDispatcher rd = request.getRequestDispatcher("programas/programas.jsp");
             rd.forward(request, response);
         }
     }
-    
     
     private String getFileName(Part part) {
         for (String content : part.getHeader("content-disposition").split(";")) {
