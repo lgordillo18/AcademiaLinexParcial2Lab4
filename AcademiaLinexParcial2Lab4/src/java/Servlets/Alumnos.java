@@ -38,6 +38,11 @@ public class Alumnos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        if ((String)request.getSession().getAttribute("user") == null || (String)request.getSession().getAttribute("user") == "") {
+            RequestDispatcher rd = request.getRequestDispatcher("Login");
+            rd.forward(request, response);
+        }
+        
         GestorAlumno gestor = new GestorAlumno();
         String section = request.getParameter("section");
         

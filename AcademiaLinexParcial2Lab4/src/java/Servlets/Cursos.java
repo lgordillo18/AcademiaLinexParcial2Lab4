@@ -39,6 +39,11 @@ public class Cursos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        if ((String)request.getSession().getAttribute("user") == null || (String)request.getSession().getAttribute("user") == "") {
+            RequestDispatcher rd = request.getRequestDispatcher("Login");
+            rd.forward(request, response);
+        }
+        
         GestorCurso gestor = new GestorCurso();
         String section = request.getParameter("section");
         

@@ -7,6 +7,8 @@ package Gestores;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -39,5 +41,35 @@ public class GestorDB {
         {
             exc.printStackTrace();
         }
+    }
+    
+    public boolean verificacionSesion(String username, String password) {
+        boolean iniciarSesion = false;
+        
+        try
+        {
+            abrirConexion();
+            PreparedStatement st = con.prepareStatement("SELECT * FROM Usuarios WHERE username = ? AND password = ?");
+            st.setString(1, username);
+            st.setString(2, password);
+            ResultSet rs = st.executeQuery();
+            if(rs.next())
+            {
+                iniciarSesion = true;
+            } else {
+                iniciarSesion = false;
+            }
+            rs.close();
+        }
+        catch(Exception exc)
+        {
+            exc.printStackTrace();
+        }
+        finally
+        {
+            cerrarConexion();
+        }
+        
+        return iniciarSesion;
     }
 }

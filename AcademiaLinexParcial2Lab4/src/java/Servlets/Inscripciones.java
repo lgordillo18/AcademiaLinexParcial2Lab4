@@ -40,6 +40,11 @@ public class Inscripciones extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        if ((String)request.getSession().getAttribute("user") == null || (String)request.getSession().getAttribute("user") == "") {
+            RequestDispatcher rd = request.getRequestDispatcher("Login");
+            rd.forward(request, response);
+        }
+        
         GestorAlumnoInscripto gestorIns = new GestorAlumnoInscripto();
         GestorAlumno gestorAl = new GestorAlumno();
         GestorCurso gestorC = new GestorCurso();
