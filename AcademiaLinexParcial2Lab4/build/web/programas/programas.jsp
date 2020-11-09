@@ -51,9 +51,11 @@
                                                 <td class="text-center">${ item.nombreAutor}</td>
                                                 <td class="text-center">
                                                     <c:if test="${item.habilitado}">
-                                                        <a href="Programas?section=descargar&id=${ item.id }">
-                                                            <button class="btn btn-primary" type="button" style="margin-left: 6px;">Descargar</button>
-                                                        </a>
+                                                        <form method="post" action="Programas?action=logDescarga&id=${ item.id }">
+                                                            <a href="file:///C:\Users\User\Documents\GitHub\Parcial2Lab4\AcademiaLinexParcial2Lab4\web\subidas\ ${ item.ruta }">
+                                                                <button class="btn btn-primary" type="submit" style="margin-left: 6px;">Descargar</button>
+                                                            </a>
+                                                        </form>
                                                     </c:if>
                                                 </td>
                                                 <% if ((String)request.getSession().getAttribute("user") != null && (String)request.getSession().getAttribute("user") != "") { %>

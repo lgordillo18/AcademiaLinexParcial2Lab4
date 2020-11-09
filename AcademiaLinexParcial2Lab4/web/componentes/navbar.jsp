@@ -16,7 +16,8 @@
                 <% if ((String)request.getSession().getAttribute("user") != null && (String)request.getSession().getAttribute("user") != "") { %>
                     <li class="nav-item"><a class="nav-link" href="Cursos">Cursos</a></li>
                     <li class="nav-item"><a class="nav-link" href="Alumnos">Alumnos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Inscripciones">Inscripciones</a></li>   
+                    <li class="nav-item"><a class="nav-link" href="Inscripciones">Inscripciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Reportes">Reportes</a></li> 
                 <% } %>
                 <li class="nav-item"><a class="nav-link" href="Login">Iniciar Sesion</a></li>
             </ul>

@@ -52,14 +52,6 @@
                                 </div>
                                 <button class="btn btn-primary btn-block" type="submit" style="padding: 6px;margin-top: 70px;">Inscribir</button></form>
                         </div>
-                        <div class="col-md-12 col-lg-4 text-center">
-                            <div class="summary">
-                                <h3></h3>
-                                <h4><span class="text">Subtotal:&nbsp;</span><span class="price">$0</span></h4>
-                                <h4><span class="text">Descuento:&nbsp;</span><span class="price">$0</span></h4>
-                                <h4 style="margin-top: 37px;"><span class="text">Total:&nbsp;</span><span class="price">$0</span></h4>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

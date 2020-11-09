@@ -10,7 +10,6 @@ import Gestores.GestorAlumnoInscripto;
 import Gestores.GestorPrograma;
 import Modelos.Programa;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -93,18 +92,22 @@ public class Programas extends HttpServlet {
         if (idPrograma == null) {
             String nombre = request.getParameter("txtNombre");
             int idAutor = Integer.parseInt(request.getParameter("cmbAlumno"));
-            String ruta = request.getParameter("upload");
+            String randomId = Integer.toString((int)(Math.random()*100000+1));
+            String ruta = "";
+            
             for(Part part:  request.getParts()) {
                 String fileName = getFileName(part);
                 if (!fileName.isEmpty()) 
-                    part.write(idAutor + fileName);
-                    ruta = (idAutor + fileName);
+                    part.write(randomId + fileName);
+                    ruta = randomId + fileName;
             }
+
             boolean habilitar = request.getParameter("checkDescarga") == "null" ? false : true;
             
             Programa p = new Programa(nombre, habilitar, ruta, idAutor);
             gestor.nuevo(p);
             
+            request.setAttribute("programas", gestor.obtenerListado());
             RequestDispatcher rd = request.getRequestDispatcher("programas/programas.jsp");
             rd.forward(request, response);
         }
@@ -115,6 +118,9 @@ public class Programas extends HttpServlet {
             }
             if (action.equals("deshabilitar")) {
                 gestor.habilitar(Integer.parseInt(idPrograma), false);
+            }
+            if (action.equals("logDescarga")) {
+                gestor.logDescarga(Integer.parseInt(idPrograma));
             }
             
             request.setAttribute("programas", gestor.obtenerListado());

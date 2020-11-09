@@ -110,6 +110,7 @@ public class Cursos extends HttpServlet {
             Curso c = new Curso(nombre, Double.parseDouble(precio), tipoCursoId, tipoTurnoId);
             gestor.nuevoCurso(c);
             
+            request.setAttribute("cursos", gestor.obtenerListado());
             RequestDispatcher rd = request.getRequestDispatcher("cursos/cursos.jsp");
             rd.forward(request, response);
         } else {
