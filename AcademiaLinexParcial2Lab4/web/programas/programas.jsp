@@ -38,7 +38,9 @@
                                             <th class="text-center">Nombre</th>
                                             <th class="text-center">Autor</th>
                                             <th class="text-center">Descarga</th>
+                                            <% if ((String)request.getSession().getAttribute("user") != null && (String)request.getSession().getAttribute("user") != "") { %>
                                             <th style="text-align: right;">Opciones</th>
+                                            <% } %>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -48,6 +50,7 @@
                                                 <td class="text-center">${ item.nombre }</td>
                                                 <td class="text-center">${ item.nombreAutor}</td>
                                                 <td class="text-center">${ item.ruta}</td>
+                                                <% if ((String)request.getSession().getAttribute("user") != null && (String)request.getSession().getAttribute("user") != "") { %>
                                                 <td style="text-align: right;">
                                                     <a href="Programas?section=habilitar&id=${ item.id }">
                                                         <button class="btn btn-primary" type="button" style="margin-left: 6px;">Habilitar</button>
@@ -59,6 +62,7 @@
                                                         <button class="btn btn-primary bg-danger" type="button" style="margin-left: 6px;">Eliminar</button>
                                                     </a>
                                                 </td>
+                                                <% } %>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
@@ -68,11 +72,13 @@
                     </div>
                 </div>
                 <div>
+                    <% if ((String)request.getSession().getAttribute("user") != null && (String)request.getSession().getAttribute("user") != "") { %>
                     <div class="row text-right" style="padding-top: 12px;">
                         <div class="col">
                             <a href="Programas?section=nuevo"><button class="btn btn-primary" type="button" style="width: 107px;">Cargar Programa</button></a>
                         </div>
                     </div>
+                    <% } %>
                 </div>
             </div>
         </section>
