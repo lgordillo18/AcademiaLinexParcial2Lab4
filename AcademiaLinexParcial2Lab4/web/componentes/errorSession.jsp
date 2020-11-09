@@ -17,8 +17,8 @@
         <section class="clean-block clean-form dark">
             <div class="container">
                 <div class="block-heading">
-                    <h1 class="text-info">Usuario o contraseña incorrectos</h1>
-                    <h3 class="text-info">Por favor intente nuevamente tocando <a href="Login" style="color: red">click aqui!</a></h3>
+                    <h1 class="text-info">Usted debe estar logeado para acceder aqui</h1>
+                    <h3 class="text-info">Por favor ingresar haciendo <a href="Login" style="color: red">click aqui!</a></h3>
                 </div>
             </div>
         </section>

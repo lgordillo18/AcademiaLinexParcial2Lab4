@@ -41,7 +41,7 @@ public class Inscripciones extends HttpServlet {
             throws ServletException, IOException {
         
         if ((String)request.getSession().getAttribute("user") == null || (String)request.getSession().getAttribute("user") == "") {
-            RequestDispatcher rd = request.getRequestDispatcher("Login");
+            RequestDispatcher rd = request.getRequestDispatcher("componentes/errorSession.jsp");
             rd.forward(request, response);
         }
         
