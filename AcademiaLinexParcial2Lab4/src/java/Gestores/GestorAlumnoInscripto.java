@@ -48,15 +48,16 @@ public class GestorAlumnoInscripto extends GestorDB {
         {
             abrirConexion();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT ali.id as codigo, al.nombre + ' ' + al.apellido as nombreAlumno, c.nombre as nombreCurso, ali.fechaInscripcion as fechaIns FROM AlumnosInscriptos ali JOIN Alumnos al ON al.id = ali.idAlumno JOIN Cursos c ON c.id = ali.idCurso;");
+            ResultSet rs = st.executeQuery("SELECT ali.id as codigo, al.nombre + ' ' + al.apellido as nombreAlumno, al.id as idAlumno, c.nombre as nombreCurso, ali.fechaInscripcion as fechaIns FROM AlumnosInscriptos ali JOIN Alumnos al ON al.id = ali.idAlumno JOIN Cursos c ON c.id = ali.idCurso;");
             while(rs.next())
             {
                 int id = rs.getInt("codigo");
                 String alumno = rs.getString("nombreAlumno");
+                int idAlumno = rs.getInt("idAlumno");
                 String curso = rs.getString("nombreCurso");
                 String fechaIns = rs.getString("fechaIns");
                 
-                DtoListadoInscriptos ali = new DtoListadoInscriptos(id, alumno, curso, fechaIns);
+                DtoListadoInscriptos ali = new DtoListadoInscriptos(id, alumno, idAlumno, curso, fechaIns);
                 lista.add(ali);
             }
             rs.close();

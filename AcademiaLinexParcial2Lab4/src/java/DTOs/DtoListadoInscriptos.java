@@ -12,14 +12,24 @@ package DTOs;
 public class DtoListadoInscriptos {
     private int codigoInscripcion;
     private String nombreAlumno;
+    private int idAlumno;
     private String nombreCurso;
     private String fechaInscripcion;
 
-    public DtoListadoInscriptos(int codigoInscripcion, String nombreAlumno, String nombreCurso, String fechaInscripcion) {
+    public DtoListadoInscriptos(int codigoInscripcion, String nombreAlumno, int idAlumno, String nombreCurso, String fechaInscripcion) {
         this.codigoInscripcion = codigoInscripcion;
         this.nombreAlumno = nombreAlumno;
+        this.idAlumno = idAlumno;
         this.nombreCurso = nombreCurso;
         this.fechaInscripcion = fechaInscripcion;
+    }
+
+    public int getIdAlumno() {
+        return idAlumno;
+    }
+
+    public void setIdAlumno(int idAlumno) {
+        this.idAlumno = idAlumno;
     }
 
     public int getCodigoInscripcion() {
